@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
 import paymentRoutes from './routes/Jahid/paymentRoute.js';
+import searchRoutes from './routes/Jahid/searchRoute.js';
 
 /**
  * Express.
@@ -55,6 +56,15 @@ app.use(cookieParser());
  * @memberof module:routes/Jahid/paymentRoute
  */
 app.use('/api/payments', paymentRoutes);
+
+/**
+ * Search routes.
+ * @function
+ * @name /api/search
+ * @memberof module:routes/Jahid/searchRoute
+ */
+app.use('/api/search', searchRoutes);
+
 
 /**
  * Middleware to handle errors.
