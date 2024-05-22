@@ -5,7 +5,7 @@ import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
 import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
 import paymentRoutes from './routes/Jahid/paymentRoute.js';
-
+import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
 
 /**
  * Express.
@@ -60,6 +60,16 @@ app.use(cookieParser());
  */
 app.use('/api/admin', adminRoute);
 
+/**
+ * Collaboration routes.
+ * Fahim's work
+ * @function
+ * @name /api/projects
+ * @memberof module:routes/Fahim/collaborationRoute
+ */
+app.use('/api/projects', collaborationRoutes);
+
+/** 
  * Payment routes.
  * @function
  * @name /api/payments
