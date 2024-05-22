@@ -1,11 +1,12 @@
-import cookieParser from 'cookie-parser';
-import { config } from 'dotenv';
-import express from 'express';
-import cors from 'cors';
-import { errorMiddlewares } from './middlewares/error.js';
-import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
-import paymentRoutes from './routes/Jahid/paymentRoute.js';
-import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
+import cookieParser from "cookie-parser";
+import { config } from "dotenv";
+import express from "express";
+import cors from "cors";
+import { errorMiddlewares } from "./middlewares/error.js";
+import adminRoute from "./routes/Fahim/adminPanelRoute.js";
+import paymentRoutes from "./routes/Jahid/paymentRoute.js";
+import collaborationRoutes from "./routes/Fahim/collaborationRoute.js";
+import authRoutes from "./routes/authRoutes.js";
 
 /**
  * Express.
@@ -18,9 +19,8 @@ export const app = express();
  * @function
  */
 config({
-  path: './data/config.env',
+  path: "./data/config.env",
 });
-
 
 /**
  * Middleware to parse incoming JSON requests.
@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: [process.env.CLIENT_URL],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
@@ -58,7 +58,7 @@ app.use(cookieParser());
  * @name /api/admin
  * @memberof module:routes/Fahim/adminPanelRoute
  */
-app.use('/api/admin', adminRoute);
+app.use("/api/admin", adminRoute);
 
 /**
  * Collaboration routes.
@@ -67,16 +67,17 @@ app.use('/api/admin', adminRoute);
  * @name /api/projects
  * @memberof module:routes/Fahim/collaborationRoute
  */
-app.use('/api/projects', collaborationRoutes);
+app.use("/api/projects", collaborationRoutes);
 
-/** 
+/**
  * Payment routes.
  * @function
  * @name /api/payments
  * @memberof module:routes/Jahid/paymentRoute
  */
-app.use('/api/payments', paymentRoutes);
+app.use("/api/payments", paymentRoutes);
 
+app.use("/api/auth", authRoutes);
 
 /**
  * Middleware to handle errors.
