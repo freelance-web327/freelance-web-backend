@@ -7,6 +7,7 @@ import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
 import paymentRoutes from './routes/Jahid/paymentRoute.js';
 import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
 import projectRoutes from './routes/Emon/projectPostingRoute.js';
+import searchRoutes from './routes/Jahid/searchRoute.js';
 
 /**
  * Express.
@@ -85,6 +86,15 @@ app.use('/api/payments', paymentRoutes);
  * @memberof module:routes/Emon/projectPostingRoute
  */
 app.use('/api/projects', projectRoutes);
+
+/**
+ * Route for freelancer project proposals.
+ * @name /api/proposals
+ * @function
+ * @memberof module:routes/Emon/freelancerProjectRoute
+ */
+app.use('/api/proposals', freelancerProjectRoutes);
+
 
 /**
  * Middleware to handle errors.
