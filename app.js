@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
 import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
+import paymentRoutes from './routes/Jahid/paymentRoute.js';
 
 
 /**
@@ -50,6 +51,7 @@ app.use(
 app.use(cookieParser());
 
 /**
+
  * Admin routes.
  * Fahim's work
  * @function
@@ -57,6 +59,14 @@ app.use(cookieParser());
  * @memberof module:routes/Fahim/adminPanelRoute
  */
 app.use('/api/admin', adminRoute);
+
+ * Payment routes.
+ * @function
+ * @name /api/payments
+ * @memberof module:routes/Jahid/paymentRoute
+ */
+app.use('/api/payments', paymentRoutes);
+
 
 /**
  * Middleware to handle errors.
