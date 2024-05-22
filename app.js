@@ -3,13 +3,13 @@ import { config } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
-
+import paymentRoutes from './routes/Jahid/paymentRoute.js';
 
 /**
  * Express.
  * @type {Object}
  */
-export const APP = express();
+export const app = express();
 
 /**
  * Configures environment variables from .env file.
@@ -24,7 +24,7 @@ config({
  * Middleware to parse incoming JSON requests.
  * @function
  */
-APP.use(express.json());
+app.use(express.json());
 
 /**
  * Middleware to configure CORS settings.
@@ -34,7 +34,7 @@ APP.use(express.json());
  * @param {string[]} corsOptions.methods - List of allowed HTTP methods.
  * @param {boolean} corsOptions.credentials - Allow credentials (cookies, authorization headers, TLS client certificates).
  */
-APP.use(
+app.use(
   cors({
     origin: [process.env.CLIENT_URL],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -46,12 +46,19 @@ APP.use(
  * Middleware to parse cookies from incoming requests.
  * @function
  */
-APP.use(cookieParser());
+app.use(cookieParser());
 
+/**
+ * Payment routes.
+ * @function
+ * @name /api/payments
+ * @memberof module:routes/Jahid/paymentRoute
+ */
+app.use('/api/payments', paymentRoutes);
 
 /**
  * Middleware to handle errors.
  * @function
  * @memberof module:middlewares/error
  */
-APP.use(errorMiddlewares);
+app.use(errorMiddlewares);
