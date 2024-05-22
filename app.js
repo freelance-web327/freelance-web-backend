@@ -3,13 +3,14 @@ import { config } from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
+import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
 
 
 /**
  * Express.
  * @type {Object}
  */
-export const APP = express();
+export const app = express();
 
 /**
  * Configures environment variables from .env file.
@@ -24,7 +25,7 @@ config({
  * Middleware to parse incoming JSON requests.
  * @function
  */
-APP.use(express.json());
+app.use(express.json());
 
 /**
  * Middleware to configure CORS settings.
@@ -34,7 +35,7 @@ APP.use(express.json());
  * @param {string[]} corsOptions.methods - List of allowed HTTP methods.
  * @param {boolean} corsOptions.credentials - Allow credentials (cookies, authorization headers, TLS client certificates).
  */
-APP.use(
+app.use(
   cors({
     origin: [process.env.CLIENT_URL],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -46,12 +47,20 @@ APP.use(
  * Middleware to parse cookies from incoming requests.
  * @function
  */
-APP.use(cookieParser());
+app.use(cookieParser());
 
+/**
+ * Admin routes.
+ * Fahim's work
+ * @function
+ * @name /api/admin
+ * @memberof module:routes/Fahim/adminPanelRoute
+ */
+app.use('/api/admin', adminRoute);
 
 /**
  * Middleware to handle errors.
  * @function
  * @memberof module:middlewares/error
  */
-APP.use(errorMiddlewares);
+app.use(errorMiddlewares);
