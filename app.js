@@ -5,6 +5,7 @@ import cors from 'cors';
 import { errorMiddlewares } from './middlewares/error.js';
 import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
 import paymentRoutes from './routes/Jahid/paymentRoute.js';
+import searchRoutes from './routes/Jahid/searchRoute.js';
 import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
 import projectRoutes from './routes/Emon/projectPostingRoute.js';
 
@@ -79,12 +80,20 @@ app.use('/api/projects', collaborationRoutes);
 app.use('/api/payments', paymentRoutes);
 
 /**
+ * Search routes.
+ * @function
+ * @name /api/search
+ * @memberof module:routes/Jahid/searchRoute
+ */
+app.use('/api/search', searchRoutes);
+
  * Route for project postings.
  * @name /api/projects
  * @function
  * @memberof module:routes/Emon/projectPostingRoute
  */
 app.use('/api/projects', projectRoutes);
+
 
 /**
  * Middleware to handle errors.
