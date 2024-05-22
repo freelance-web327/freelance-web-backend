@@ -6,6 +6,7 @@ import { errorMiddlewares } from './middlewares/error.js';
 import  adminRoute  from './routes/Fahim/adminPanelRoute.js';
 import paymentRoutes from './routes/Jahid/paymentRoute.js';
 import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
+import projectRoutes from './routes/Emon/projectPostingRoute.js';
 
 /**
  * Express.
@@ -77,6 +78,13 @@ app.use('/api/projects', collaborationRoutes);
  */
 app.use('/api/payments', paymentRoutes);
 
+/**
+ * Route for project postings.
+ * @name /api/projects
+ * @function
+ * @memberof module:routes/Emon/projectPostingRoute
+ */
+app.use('/api/projects', projectRoutes);
 
 /**
  * Middleware to handle errors.
