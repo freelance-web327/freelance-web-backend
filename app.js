@@ -18,6 +18,7 @@ import searchRoutes from './routes/Jahid/searchRoute.js';
 import collaborationRoutes from './routes/Fahim/collaborationRoute.js';
 import projectRoutes from './routes/Emon/projectPostingRoute.js';
 import searchRoutes from './routes/Jahid/searchRoute.js';
+import profileRoutes from "./routes/Nafesh/profileRoutes.js";
 
 
 /**
@@ -117,6 +118,13 @@ app.use('/api/projects', projectRoutes);
  */
 app.use('/api/proposals', freelancerProjectRoutes);
 
+/**
+ * Route for user profile
+ * @name /api/profile
+ * @function
+ * @memberof module:routes/Nafesh/profileRoutes
+ */
+app.use("/api/profile", profileRoutes);
 
 /**
  * Middleware to handle errors.
