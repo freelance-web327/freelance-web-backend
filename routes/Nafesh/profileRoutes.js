@@ -2,8 +2,8 @@ import express from "express";
 import {
   getUserProfile,
   updateUserProfile,
-} from "../controllers/profileController.js";
-import { isAuthenticated } from "../middlewares/authMiddleware.js";
+} from "../../controllers/Nafesh/profileController.js";
+import { isAuthenticated } from "../../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
